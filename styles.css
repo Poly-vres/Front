@@ -1,3 +1,128 @@
-p{
-    color: red;
+@keyframes blueFade {
+    0% { background-color: rgb(0, 0, 139); } /* Dark blue */
+    50% { background-color: rgb(70, 130, 180); } /* Steel blue */
+    100% { background-color: rgb(0, 0, 139); } /* Dark blue */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: rgb(0, 0, 139); /* Initial color for fallback */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: blueFade 10s infinite;
+}
+
+header .logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+header .logo img {
+    height: 50px; /* Adjust height as needed */
+    transition: transform 0.5s ease;
+}
+
+header .logo img:hover {
+    transform: rotate(360deg);
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+    background: white; /* Set background to white */
+    flex: 1; /* Take up remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main .main-logo {
+    margin-top: 20px;
+}
+
+main .main-logo img {
+    height: 200px; /* Increase height as needed */
+}
+
+footer {
+    background: rgb(0, 0, 139); /* Initial color for fallback */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    animation: blueFade 10s infinite;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+footer ul li {
+    margin-left: 20px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: #ffcccb;
+    transform: scale(1.1);
 }
