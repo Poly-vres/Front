@@ -1,65 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Inscription/Connexion</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Projet de Site Web</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="form-body">
-<div class="form-container">
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Inscription')" id="defaultOpen">Inscription</button>
-        <button class="tablinks" onclick="openTab(event, 'Connexion')">Connexion</button>
-    </div>
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="form-container">
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Inscription')" id="defaultOpen">Inscription</button>
+                <button class="tablinks" onclick="openTab(event, 'Connexion')">Connexion</button>
+            </div>
 
-    <div id="Inscription" class="tabcontent">
-        <h1>Inscription</h1>
-        <form id="signup-form" method="post" action="/signup">
-            <label for="first-name">Prénom:</label>
-            <input type="text" id="first-name" name="first_name" required><br>
+            <div id="Inscription" class="tabcontent">
+                <h1>Inscription</h1>
+                <form id="signup-form">
+                    <label for="first-name">Prénom:</label>
+                    <input type="text" id="first-name" name="first_name" required>
 
-            <label for="last-name">Nom:</label>
-            <input type="text" id="last-name" name="last_name" required><br>
+                    <label for="last-name">Nom:</label>
+                    <input type="text" id="last-name" name="last_name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+                    <label for="username">Nom d'utilisateur:</label>
+                    <input type="text" id="username" name="username" required>
 
-            <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required><br>
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="password" required>
 
-            <button type="submit">S'inscrire</button>
-        </form>
-    </div>
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
 
-    <div id="Connexion" class="tabcontent">
-        <h1>Connexion</h1>
-        <form id="login-form" method="post" action="/login">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+            <div id="Connexion" class="tabcontent">
+                <h1>Connexion</h1>
+                <form id="login-form">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
 
-            <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required><br>
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="password" required>
 
-            <button type="submit">Se connecter</button>
-        </form>
-    </div>
-</div>
+                    <button type="submit">Se connecter</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <div id="footer"></div>
 
-<script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
         }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
 
-    document.getElementById("defaultOpen").click();
-</script>
+        document.getElementById("defaultOpen").click();
+
+        function loadContent(url, elementId) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                })
+                .catch(error => console.error('Erreur:', error));
+        }
+
+        loadContent('header.html', 'header');
+        loadContent('footer.html', 'footer');
+
+
+        function containsAccents(value) {
+            return /[áàâäãåąçćčéèêëęíìîïłńñóòôöõőśšúùûüůýÿźżž]/i.test(value);
+        }
+
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const firstName = formData.get('first_name');
+            const lastName = formData.get('last_name');
+            const username = formData.get('username');
+            const password = formData.get('password');
+
+            if (containsAccents(firstName) || containsAccents(lastName) || containsAccents(username) || containsAccents(password)) {
+                alert('Les accents ne sont pas autorisés dans les champs.');
+                event.preventDefault();
+                return;
+            }
+
+            const url = `http://146.59.233.238:3000/add_library_user/${lastName}/${firstName}/${username}/${password}`;
+            const data = {
+                first_name: firstName,
+                last_name: lastName,
+                username: username,
+                password: password
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Pas de réponse de l\'API');
+            }).then(data => {
+                console.log('Success:', data);
+                // To Do redirection
+            }).catch(error => {
+                console.error('Erreur:', error);
+            });
+        });
+    </script>
 </body>
 </html>
