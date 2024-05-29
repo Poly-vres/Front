@@ -1,0 +1,38 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page des Livres</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <h2 class="titre_livre">Nos Livres</h2>
+    <div id="book-list-container"> <!-- Conteneur pour centrer la liste -->
+        <ul id="book-list"> <!-- Utilisation d'une liste -->
+        </ul>
+    </div>
+
+    <div id="footer"></div>
+
+    <script>
+        // Fonction pour charger le contenu d'un fichier et l'insérer dans un élément
+        function loadContent(url, elementId) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                })
+                .catch(error => console.error('Erreur:', error));
+        }
+
+        loadContent('header.html', 'header');
+        loadContent('footer.html', 'footer');
+    </script>
+
+    <script src="afficher_livres.js"></script>
+</body>
+</html>

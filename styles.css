@@ -9,7 +9,7 @@ h1 {
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background: #f0f0f0;
@@ -131,8 +131,16 @@ footer ul li a:hover {
     transform: scale(1.1);
 }
 
+.form-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
 .form-container {
     max-width: 450px;
+    min-width: 400px;
     margin: 0 auto;
     position: relative;
     background-color: #fff;
@@ -205,4 +213,66 @@ button {
 
 button:hover {
     background-color: #4cae4c;
+}
+
+#book-list-container {
+    display: flex; /* Utilisation de flexbox */
+    justify-content: center; /* Centrage horizontal */
+}
+
+
+.titre_livre {
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px #ccc;
+}
+
+.book-list {
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.book-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 1000px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    font-size: 1.5em;
+    margin: 0;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.author,
+.genre {
+    margin: 0;
+    color: #666;
+    text-align: center;
+}
+
+.author {
+    font-style: italic;
+}
+
+.genre {
+    font-weight: bold;
 }
