@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body class="form-body">
+<div id="header"></div>
+
 <div class="form-container">
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Inscription')" id="defaultOpen">Inscription</button>
@@ -13,18 +15,18 @@
 
     <div id="Inscription" class="tabcontent">
         <h1>Inscription</h1>
-        <form id="signup-form" method="post" action="/signup">
+        <form id="signup-form">
             <label for="first-name">Prénom:</label>
             <input type="text" id="first-name" name="first_name" required><br>
 
             <label for="last-name">Nom:</label>
             <input type="text" id="last-name" name="last_name" required><br>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username" required><br>
 
             <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required><br>
+            <input type="password" id="password" name="password" required>
 
             <button type="submit">S'inscrire</button>
         </form>
@@ -32,7 +34,7 @@
 
     <div id="Connexion" class="tabcontent">
         <h1>Connexion</h1>
-        <form id="login-form" method="post" action="/login">
+        <form id="login-form">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required><br>
 
@@ -43,6 +45,8 @@
         </form>
     </div>
 </div>
+
+<div id="footer"></div>
 
 <script>
     function openTab(evt, tabName) {
@@ -60,6 +64,45 @@
     }
 
     document.getElementById("defaultOpen").click();
+
+
+    function loadContent(url, elementId) {
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+            })
+            .catch(error => console.error('Erreur:', error));
+    }
+
+    loadContent('header.html', 'header');
+    loadContent('footer.html', 'footer');
+
+
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const firstName = formData.get('first_name');
+        const lastName = formData.get('last_name');
+        const username = formData.get('username');
+        const password = formData.get('password');
+
+        const url = `http://146.59.233.238:3000/add_library_user/${lastName}/${firstName}/${username}/${password}`;
+
+        fetch(url, {
+            method: 'GET',
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Pas de réponse de l\'API');
+        }).then(data => {
+            console.log('Success:', data);
+
+        }).catch(error => {
+            console.error('Erreur:', error);
+        });
+    });
 </script>
 </body>
 </html>

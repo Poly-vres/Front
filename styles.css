@@ -139,8 +139,8 @@ footer ul li a:hover {
 }
 
 .form-container {
-    max-width: 450px;
-    min-width: 400px;
+    max-width: 1000px;
+    min-width: 500px;
     margin: 0 auto;
     position: relative;
     background-color: #fff;
