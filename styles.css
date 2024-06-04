@@ -2,6 +2,10 @@ h1 {
     color: #333;
 }
 
+.Polyvres{
+    color : #f0f0f0;
+}
+
 @keyframes blueFade {
     0% { background-color: rgb(0, 0, 139); } /* Dark blue */
     50% { background-color: rgb(70, 130, 180); } /* Steel blue */
@@ -276,3 +280,92 @@ button:hover {
 .genre {
     font-weight: bold;
 }
+
+/* Supprimer la règle CSS pour les liens dans .title */
+.book-item .title {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+/* Ajouter les règles CSS pour les liens au niveau de .book-item */
+.book-item a {
+    text-decoration: none; /* Supprimer le soulignage */
+    color: inherit; /* Utiliser la couleur par défaut du parent */
+    cursor: pointer; /* Changer le curseur */
+    transition: color 0.2s ease; /* Transition de couleur */
+}
+
+.book-item a:hover {
+    color: #093381; /* Nouvelle couleur au survol */
+}
+
+
+.book-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  width: 100%;
+}
+
+
+
+.book-details h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    text-shadow: 2px 2px #ccc;
+    text-align: center;
+  }
+    
+  .book-details p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #666;
+    text-align: center;
+  }
+    
+  .book-details .author {
+    font-style: italic;
+  }
+  
+  .book-details .genre {
+    font-weight: bold;
+  }
+  
+  .book-details .reservation-status {
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .book-details .reservation-status.reserved {
+    color: #e64a19; /* tomato */
+  }
+  
+  .book-details .reservation-status.available {
+    color: #5cb85c; /* green */
+  }
+  
+  .book-details img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+
+  .book-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+
