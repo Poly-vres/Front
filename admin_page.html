@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tableau de gestion</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header id="header"></header>
+    <div class="c">
+      <h1>Gestion administrateur</h1>
+      <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Tableau1')">
+          Gerer les livres
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Tableau2')">
+          Gerer les utilisateurs
+        </button>
+      </div>
+      <div id="Tableau1" class="tabcontent">
+        <table id="data-table-1">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Auteur</th>
+              <th>Titre</th>
+              <th>Edition</th>
+              <th>Année</th>
+              <th>Genre</th>
+              <th>Réservé par</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Les données seront insérées ici par JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      <div id="Tableau2" class="tabcontent">
+        <table id="data-table-2">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th style="width: 55%">Prenom</th>
+              <th style="width: 55%">Nom</th>
+              <th style="width: 20%">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Les données seront insérées ici par JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Formulaire popup -->
+    <div id="popup-form" class="popup-form">
+      <form id="borrow-form">
+        <label for="user">Nom de l'utilisateur:</label>
+        <input type="text" id="user" name="user" required />
+        <input type="hidden" id="book-id" name="book-id" />
+        <div class="bottom-flex-container">
+          <button type="submit" class="padtop">Confirmer</button>
+          <button type="button" class="padtop" onclick="closePopup()">
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+    <footer id="footer" style="width: 100%"></footer>
+
+    <script src="admin_page_script.js"></script>
+  </body>
+</html>
