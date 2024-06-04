@@ -7,14 +7,28 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header id="header"></header>
+    <header id="header" style="padding: 0; margin: 0"></header>
     <div class="c">
       <h1>Gestion administrateur</h1>
-      <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Tableau1')">
+      <div class="tab1">
+        <button
+          class="tablinks"
+          style="
+            border-top-left-radius: 100px;
+            border-bottom-left-radius: 100px;
+          "
+          onclick="openTab(event, 'Tableau1')"
+        >
           Gerer les livres
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Tableau2')">
+        <button
+          class="tablinks"
+          style="
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
+          "
+          onclick="openTab(event, 'Tableau2')"
+        >
           Gerer les utilisateurs
         </button>
       </div>
@@ -60,6 +74,9 @@
         <label for="user">Nom de l'utilisateur:</label>
         <input type="text" id="user" name="user" required />
         <input type="hidden" id="book-id" name="book-id" />
+        <p id="error-message" style="color: red; display: none">
+          Utilisateur inexistant. Veuillez entrer un utilisateur valide.
+        </p>
         <div class="bottom-flex-container">
           <button type="submit" class="padtop">Confirmer</button>
           <button type="button" class="padtop" onclick="closePopup()">
@@ -68,6 +85,7 @@
         </div>
       </form>
     </div>
+
     <footer id="footer" style="width: 100%"></footer>
 
     <script src="admin_page_script.js"></script>
