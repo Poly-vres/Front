@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mon Projet de Site Web</title>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -45,20 +46,9 @@
 
     <div id="footer"></div>
 
-    <script>
-      // Fonction pour charger le contenu d'un fichier et l'insérer dans un élément
-      function loadContent(url, elementId) {
-        fetch(url)
-          .then((response) => response.text())
-          .then((data) => {
-            document.getElementById(elementId).innerHTML = data;
-          })
-          .catch((error) => console.error("Erreur:", error));
-      }
 
-      loadContent("header.html", "header");
-      loadContent("footer.html", "footer");
-    </script>
+
+    //<script src="load_contents.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

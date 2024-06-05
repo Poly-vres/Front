@@ -11,8 +11,8 @@
     <main>
         <div class="form-container">
             <div class="tab">
-                <button class="tablinks" onclick="openTab(event, 'Inscription')" id="defaultOpen">Inscription</button>
-                <button class="tablinks" onclick="openTab(event, 'Connexion')">Connexion</button>
+                <button class="tablinks" onclick="openTab(event, 'Inscription')">Inscription</button>
+                <button class="tablinks" onclick="openTab(event, 'Connexion')" id="defaultOpen">Connexion</button>
             </div>
 
             <div id="Inscription" class="tabcontent">
@@ -25,10 +25,10 @@
                     <input type="text" id="last-name" name="last_name" required>
 
                     <label for="username">Nom d'utilisateur:</label>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="usernameSign" name="username" required>
 
                     <label for="password">Mot de passe:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="passwordSign" name="password" required>
 
                     <button type="submit">S'inscrire</button>
                 </form>
@@ -37,11 +37,11 @@
             <div id="Connexion" class="tabcontent">
                 <h1>Connexion</h1>
                 <form id="login-form">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="username">Nom d'utilisateur:</label>
+                    <input type="text" id="usernameLog" name="username" required>
 
                     <label for="password">Mot de passe:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="passwordLog" name="password" required>
 
                     <button type="submit">Se connecter</button>
                 </form>
@@ -49,6 +49,9 @@
         </div>
     </main>
     <div id="footer"></div>
+
+
+    <script src="load_contents.js"></script>
 
     <script>
         function openTab(evt, tabName) {
@@ -66,19 +69,6 @@
         }
 
         document.getElementById("defaultOpen").click();
-
-        function loadContent(url, elementId) {
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(elementId).innerHTML = data;
-                })
-                .catch(error => console.error('Erreur:', error));
-        }
-
-        loadContent('header.html', 'header');
-        loadContent('footer.html', 'footer');
-
 
         function containsAccents(value) {
             return /[áàâäãåąçćčéèêëęíìîïłńñóòôöõőśšúùûüůýÿźżž]/i.test(value);
@@ -98,7 +88,7 @@
                 return;
             }
 
-            const url = `http://146.59.233.238:3000/add_library_user/${lastName}/${firstName}/${username}/${password}`;
+            const url = `http://146.59.233.238:3000/library_users/create/${lastName}/${firstName}/${username}/${password}`;
             const data = {
                 first_name: firstName,
                 last_name: lastName,
@@ -119,7 +109,46 @@
                 throw new Error('Pas de réponse de l\'API');
             }).then(data => {
                 console.log('Success:', data);
-                // To Do redirection
+                localStorage.setItem('auth', 'connected');
+                window.location.href = 'userPage.html';
+            }).catch(error => {
+                console.error('Erreur:', error);
+            });
+        });
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const username = formData.get('username');
+            const password = formData.get('password');
+
+            const url = `http://146.59.233.238:3000/library_users/connect/${username}/${password}`;
+            const data = {
+                username: username,
+                password: password
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Pas de réponse de l\'API');
+            }).then(data => {
+                console.log('Success:', data);
+                console.log(data.message);
+                if (data.message === 'admin') {
+                    localStorage.setItem('auth', 'connectedAdmin');
+                    window.location.href = 'adminPage.html'; // ToDo : Rediriger vers la page admin
+                } else {
+                    localStorage.setItem('auth', 'connectedUser');
+                    window.location.href = 'userPage.html';
+                }
             }).catch(error => {
                 console.error('Erreur:', error);
             });
