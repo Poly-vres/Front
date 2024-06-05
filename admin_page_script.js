@@ -77,7 +77,7 @@ function createTableBookRow(book) {
         <td>${book.edition}</td>
         <td>${book.year}</td>
         <td>${book.genre}</td>
-        <td>${book.reservated_by}</td>
+        <td>${book.reservated_by ? book.reservated_by : 0 }</td>
         <td>${buttonHTML}</td>
     `;
     return row;
