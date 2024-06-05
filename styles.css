@@ -484,3 +484,69 @@ th {
 .btn-blue-big:focus {
     background-color: #357CA5;
 }
+
+.book-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  width: 100%;
+}
+
+
+
+.book-details h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    text-shadow: 2px 2px #ccc;
+    text-align: center;
+  }
+
+  .book-details p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #666;
+    text-align: center;
+  }
+
+  .book-details .author {
+    font-style: italic;
+  }
+
+  .book-details .genre {
+    font-weight: bold;
+  }
+
+  .book-details .reservation-status {
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+  }
+
+  .book-details .reservation-status.reserved {
+    color: #e64a19; /* tomato /
+  }
+
+  .book-details .reservation-status.available {
+    color: #5cb85c; / green */
+  }
+
+  .book-details img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+
+  .book-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
