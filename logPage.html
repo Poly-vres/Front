@@ -45,6 +45,7 @@
 
                     <button type="submit">Se connecter</button>
                 </form>
+                <p id="error-message" style="color: red; display: none;">Nom d'utilisateur ou mot de passe incorrect.</p>
             </div>
         </div>
     </main>
@@ -121,6 +122,7 @@
             const formData = new FormData(event.target);
             const username = formData.get('username');
             const password = formData.get('password');
+            const errorMessage = document.getElementById('error-message');
 
             const url = `http://146.59.233.238:3000/library_users/connect/${username}/${password}`;
             const data = {
@@ -138,7 +140,8 @@
                 if (response.ok) {
                     return response.json();
                 }
-                throw new Error('Pas de réponse de l\'API');
+                errorMessage.style.display = 'block';
+                throw new Error('Erreur de connexion');
             }).then(data => {
                 console.log('Success:', data);
                 console.log(data.message);
