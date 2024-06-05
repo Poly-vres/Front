@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Utilisateur</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+        <h2>Bienvenue sur votre page utilisateur</h2>
+        <p>Vous êtes maintenant connecté.</p>
+        <button id="logout-button">Déconnexion</button>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="load_contents.js"></script>
+
+    <script>
+        document.getElementById('logout-button').addEventListener('click', function() {
+            console.log('Déconnexion');
+            localStorage.setItem('auth', 'disconnected');
+            window.location.href = 'logPage.html';
+        });
+    </script>
+</body>
+</html>

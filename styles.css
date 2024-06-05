@@ -3,9 +3,15 @@ h1 {
 }
 
 @keyframes blueFade {
-    0% { background-color: rgb(0, 0, 139); } /* Dark blue */
-    50% { background-color: rgb(70, 130, 180); } /* Steel blue */
-    100% { background-color: rgb(0, 0, 139); } /* Dark blue */
+    0% {
+        background-color: rgb(0, 0, 139);
+    }
+    50% {
+        background-color: rgb(70, 130, 180);
+    }
+    100% {
+        background-color: rgb(0, 0, 139);
+    }
 }
 
 body {
@@ -17,12 +23,16 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 header {
-    background: rgb(0, 0, 139); /* Initial color for fallback */
+    background: rgb(0, 0, 139);
+    /* Initial color for fallback */
+    width: 100%;
     color: white;
-    padding: 15px 20px;
+    padding-bottom: 30px;
+    padding-top: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,8 +53,12 @@ header .logo h1 {
     margin-right: 10px;
 }
 
+header .logo {
+    margin-left: 50px;
+}
+
 header .logo img {
-    height: 50px; /* Adjust height as needed */
+    height: 50px;
     transition: transform 0.5s ease;
 }
 
@@ -54,7 +68,7 @@ header .logo img:hover {
 
 header nav ul {
     list-style: none;
-    margin: 0;
+    margin-right: 50px;
     padding: 0;
     display: flex;
 }
@@ -79,8 +93,8 @@ header nav ul li a:hover {
 main {
     padding: 20px;
     text-align: center;
-    background: white; /* Set background to white */
-    flex: 1; /* Take up remaining space */
+    background: white;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,11 +106,14 @@ main .main-logo {
 }
 
 main .main-logo img {
-    height: 200px; /* Increase height as needed */
+    height: 200px;
 }
 
 footer {
-    background: rgb(0, 0, 139); /* Initial color for fallback */
+    background: rgb(0, 0, 139);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -139,8 +156,8 @@ footer ul li a:hover {
 }
 
 .form-container {
-    max-width: 450px;
-    min-width: 400px;
+    max-width: 1000px;
+    min-width: 500px;
     margin: 0 auto;
     position: relative;
     background-color: #fff;
@@ -216,8 +233,8 @@ button:hover {
 }
 
 #book-list-container {
-    display: flex; /* Utilisation de flexbox */
-    justify-content: center; /* Centrage horizontal */
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -231,7 +248,7 @@ button:hover {
 }
 
 .book-list {
-    display: flex; 
+    display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -275,4 +292,285 @@ button:hover {
 
 .genre {
     font-weight: bold;
+}
+
+.book-item .title {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.book-item a {
+    text-decoration: none; 
+    color: inherit; 
+    cursor: pointer;
+    transition: color 0.2s ease; 
+}
+
+.book-item a:hover {
+    color: #093381;
+}
+
+
+
+
+
+
+
+.c {
+    width: 100%;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.tab1 {
+    margin-left: 4%;
+    margin-right: 4%;
+    border-bottom: 1px solid #ccc;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2%;
+}
+
+.tab1 button {
+    background-color: rgb(231, 231, 231);
+    float: left;
+
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+
+}
+
+.tab1 button:hover {
+    background-color: #ddd;
+}
+
+.tab1 button.active {
+    background-color: #adadad;
+
+}
+
+.tabcontent {
+    display: none;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding-bottom: 50px;
+}
+
+.tablinks {
+
+    color: #333;
+    width: 50%;
+    font-size: medium;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+#borrow-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.popup-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 20%;
+    height: 40%;
+}
+
+
+.padtop {
+    margin-top: 10px;
+}
+
+.popup-form form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.popup-form form label,
+.popup-form form input {
+    margin-bottom: 10px;
+}
+
+.bottom-flex-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    /* Added to push the buttons to the bottom */
+}
+
+.btn-green {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 5rem;
+}
+
+.btn-red {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 5rem;
+}
+
+.btn-red-big {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 20rem;
+}
+
+.btn-green-big {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 20rem;
+}
+
+.btn-blue-big {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 20rem;
+}
+
+.btn-green:hover,
+.btn-green:focus {
+    background-color: #4CAF50;
+}
+
+.btn-red:hover,
+.btn-red:focus {
+    background-color: #DD4B39;
+}
+
+.btn-red-big:hover,
+.btn-red-big:focus {
+    background-color: #DD4B39;
+}
+
+.btn-green-big:hover,
+.btn-green-big:focus {
+    background-color: #4CAF50;
+}
+
+.btn-blue-big:hover,
+.btn-blue-big:focus {
+    background-color: #357CA5;
+}
+
+.book-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  width: 100%;
+}
+
+
+
+.book-details h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    text-shadow: 2px 2px #ccc;
+    text-align: center;
+  }
+
+  .book-details p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #666;
+    text-align: center;
+  }
+
+  .book-details .author {
+    font-style: italic;
+  }
+
+  .book-details .genre {
+    font-weight: bold;
+  }
+
+  .book-details .reservation-status {
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+  }
+
+  .book-details .reservation-status.reserved {
+    color: #e64a19; /* tomato /
+  }
+
+  .book-details .reservation-status.available {
+    color: #5cb85c; / green */
+  }
+
+  .book-details img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+
+  .book-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }

@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mon Projet de Site Web</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
 
-<div id="header"></div>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="header"></div>
 
-<main>
-    <h2>Bienvenue à la bibliothèque</h2>
-    <p>Bienvenue dans notre bibliothèque en ligne, un lieu où la connaissance et l'inspiration sont à portée de clic. Nous sommes ravis de vous accueillir dans cet espace numérique conçu pour tous les amateurs de lecture, les chercheurs de savoir et les passionnés de littérature.</p>
-    <p><strong>Explorez notre collection de livres :</strong><br>
-        Plongez dans notre vaste collection de livres couvrant une multitude de genres et de sujets. Que vous soyez à la recherche de romans captivants, de récits historiques fascinants, de guides pratiques ou de recherches académiques, notre bibliothèque offre quelque chose pour chaque lecteur. Notre catalogue est constamment mis à jour avec les dernières nouveautés et les œuvres classiques incontournables.</p>
-    <p><strong>Profitez de notre espace dédié aux utilisateurs :</strong><br>
-        Nous avons créé un espace spécialement pour vous, nos utilisateurs, afin de rendre votre expérience aussi enrichissante que possible.</p>
-    <p>Nous espérons que vous apprécierez votre visite et que vous trouverez de nombreux trésors littéraires et éducatifs dans notre bibliothèque en ligne. N'hésitez pas à nous contacter si vous avez des questions ou besoin d'assistance. Bonne lecture et bienvenue dans votre espace de découverte et de savoir !</p>
-    <div class="main-logo">
-        <img src="./Logo.jpg" alt="Logo de Poly'vre">
-    </div>
-</main>
+    <main>
+      <h2>Bienvenue à la bibliothèque</h2>
+      <p>
+        Bienvenue dans notre bibliothèque en ligne, un lieu où la connaissance
+        et l'inspiration sont à portée de clic. Nous sommes ravis de vous
+        accueillir dans cet espace numérique conçu pour tous les amateurs de
+        lecture, les chercheurs de savoir et les passionnés de littérature.
+      </p>
+      <p>
+        <strong>Explorez notre collection de livres :</strong><br />
+        Plongez dans notre vaste collection de livres couvrant une multitude de
+        genres et de sujets. Que vous soyez à la recherche de romans captivants,
+        de récits historiques fascinants, de guides pratiques ou de recherches
+        académiques, notre bibliothèque offre quelque chose pour chaque lecteur.
+        Notre catalogue est constamment mis à jour avec les dernières nouveautés
+        et les œuvres classiques incontournables.
+      </p>
+      <p>
+        <strong>Profitez de notre espace dédié aux utilisateurs :</strong><br />
+        Nous avons créé un espace spécialement pour vous, nos utilisateurs, afin
+        de rendre votre expérience aussi enrichissante que possible.
+      </p>
+      <p>
+        Nous espérons que vous apprécierez votre visite et que vous trouverez de
+        nombreux trésors littéraires et éducatifs dans notre bibliothèque en
+        ligne. N'hésitez pas à nous contacter si vous avez des questions ou
+        besoin d'assistance. Bonne lecture et bienvenue dans votre espace de
+        découverte et de savoir !
+      </p>
+      <div class="main-logo">
+        <img src="./Logo.jpg" alt="Logo de Poly'vre" />
+      </div>
+    </main>
+
+    <div id="footer"></div>
 
 
-<div id="footer"></div>
 
-<script>
-    // Fonction pour charger le contenu d'un fichier et l'insérer dans un élément
-    function loadContent(url, elementId) {
-        fetch(url)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(elementId).innerHTML = data;
-            })
-            .catch(error => console.error('Erreur:', error));
-    }
-
-    loadContent('header.html', 'header');
-    loadContent('footer.html', 'footer');
-</script>
-<script src="./script.js"></script>
-</body>
-
+    <script src="load_contents.js"></script>
+  </body>
 </html>
