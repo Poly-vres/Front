@@ -2,11 +2,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiUrlBook = 'http://146.59.233.238:3000/library_books';
     const apiUrlUser = 'http://146.59.233.238:3000/library_users';
     let userTab = [];
+    let bookCount = 0;
+    let userCount = 0;
 
-    fetchData(apiUrlBook, data => populateTable(data, '#data-table-1 tbody', createTableBookRow));
+    fetchData(apiUrlBook, data => {
+        bookCount = data.length;
+        populateTable(data, '#data-table-1 tbody', createTableBookRow);
+        updateStats(bookCount, userCount);
+    });
     fetchData(apiUrlUser, data => {
         userTab = data;
+        userCount = data.filter(user => user.id > 4).length;
         populateTable(data.filter(user => user.id > 4), '#data-table-2 tbody', createTableUserRow);
+        updateStats(bookCount, userCount);
     });
 
     document.getElementById('borrow-form').addEventListener('submit', event => handleBorrowFormSubmit(event, userTab));
@@ -24,10 +32,16 @@ function fetchData(url, callback) {
 
 function populateTable(data, tableBodySelector, createRowFunction) {
     const tableBody = document.querySelector(tableBodySelector);
+    tableBody.innerHTML = ''; // Clear the table body before populating
     data.forEach(item => {
         const row = createRowFunction(item);
         tableBody.appendChild(row);
     });
+}
+
+function updateStats(bookCount, userCount) {
+    const statsDiv = document.getElementById('stats');
+    statsDiv.textContent = `Nombre de livres: ${bookCount} | Nombre d'utilisateurs: ${userCount}`;
 }
 
 function handleBorrowFormSubmit(event, userTab) {
