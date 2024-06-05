@@ -33,9 +33,12 @@ loadContent('header.html', 'header', function() {
             return;
         } else if (token === 'connectedAdmin') {
             console.log('Utilisateur connecté en tant qu\'admin, redirection vers adminPage.html');
-            window.location.href = 'adminPage.html'; // ToDo : Rediriger vers la page admin
+            window.location.href = 'admin_page.html';
             return;
-        }
+        } else [
+            console.log('Pas de token trouvé, redirection vers logPage.html'),
+            window.location.href = 'logPage.html'
+        ]
     });
 });
 

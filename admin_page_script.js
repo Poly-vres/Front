@@ -170,3 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
     loadHTML('header', 'header.html');
     loadHTML('footer', 'footer.html');
 });
+
+document.getElementById('logout-button').addEventListener('click', function() {
+    console.log('Déconnexion');
+    localStorage.setItem('auth', 'disconnected');
+    window.location.href = 'logPage.html';
+});
