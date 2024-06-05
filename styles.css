@@ -294,6 +294,30 @@ button:hover {
     font-weight: bold;
 }
 
+.book-item .title {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.book-item a {
+    text-decoration: none; 
+    color: inherit; 
+    cursor: pointer;
+    transition: color 0.2s ease; 
+}
+
+.book-item a:hover {
+    color: #093381;
+}
+
+
+
+
+
+
+
 .c {
     width: 100%;
     background-color: #f4f4f4;
